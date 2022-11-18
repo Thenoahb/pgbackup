@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pgbackup
+Version: 0.1.0
+Summary: Creates a backup of my database locally or to AWS S3
+Author: Noah Bessler
+Author-email: besslern2@nku.edu
+
+******************************
+This is example of rst on GFG
+******************************
+  
+*GeeksforGeeks in italic*
+  
+**GeeksforGeeks in bold**
+  
+`Gfg website<www.geeksforgeeks.org>`
+  
+``GeeksforGeeks in vebatim``
