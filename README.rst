@@ -24,17 +24,17 @@ Pass in a full database URL, the storage driver, destination.
 S3 Example w/ bucket name:
 
 ::
-
-	$ pgbackup postgres://192.168.118.129:5000/db_one --driver s3 backups
+	
+	$ pgbackup postgres://NoahDB@192.168.118.129:80/db_one --driver s3 backups
 
 Local Example w/ local path:
 
 ::
 
-	$ pgbackup postgres://192.168.118.129:5000/db_one --driver local /var/local/db_one/backups
+	$ pgbackup postgres://NoahDB@192.168.118.129:80/db_one --driver local /var/local/db_one/backups
 
 Running Test
-______________
+_____________
 
 Run test locally using ``make`` if virtual environment is active.
 
@@ -46,5 +46,5 @@ If virtual environment isn't active, use:
 
 ::
 
-	$ pipenv run make
+	$ pipenv run makea
 
