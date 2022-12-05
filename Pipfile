@@ -4,6 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+boto3 = "*"
+mocker = "*"
+pytest-mock = "*"
 
 [dev-packages]
 pytest = "*"
