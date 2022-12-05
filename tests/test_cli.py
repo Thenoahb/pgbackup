@@ -3,8 +3,7 @@
 import pytest 
 from pgbackup import cli
 
-url = "postgres://bob:password@example.com:5432/db_one" 
-#url = "postgres://NoahDB:cit483@192.168.118.129:80/db_one"
+url = "postgres://NoahDB:cit483@10.2.56.123:80/db_one"
 
 
 @pytest.fixture
@@ -17,6 +16,7 @@ def parser():
 def test_parser_without_driver(parser): 
 	with pytest.raises(SystemExit):
 		parser.parse_args([url])
+
 
 #  With a driver but no destination the parser will exit.
 def test_parser_with_driver(parser):
@@ -32,7 +32,13 @@ def test_parser_with_driver_and_destination(parser):
 	assert args.destination == "/some/path"
 
 
-#  The parser will exit if the driver name is does match our two expected options. 
+#  The parser will exit if the driver name doesn't match our two expected options. 
 def test_parser_with_unknown_drivers(parser):
-	args = parser.parse_args([url, "--driver", "s3", "/some/path"])
-	assert args.driver.lower() == "local" or args.driver.lower() == "s3"
+	with pytest.raises(SystemExit):
+		parser.parse_args([url, "--driver", "azure", "/some/path"])
+
+
+#  The parser will not exit if the driver name is known.
+def test_parser_with_known_drivers(parser):
+	for driver in ["local", "s3"]:
+		assert parser.parse_args([url, "--driver", driver, "/some/path"])
